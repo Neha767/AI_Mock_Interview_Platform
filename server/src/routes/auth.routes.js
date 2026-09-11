@@ -7,7 +7,7 @@
 //   GET  /api/auth/me       → Get current user
 //   POST /api/auth/logout   → Logout
 // Reference: Router, HTTP methods - reference-backend.md
-// ============================================
+// =============================================
 
 import { Router } from 'express';
 import { registerUser, loginUser, getMe, logout } from '../controllers/auth.controller.js';
