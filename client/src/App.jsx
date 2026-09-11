@@ -1,20 +1,10 @@
-// ============================================
-// App.jsx - Root Component with Routing
-// ============================================
-// Reference: Routes, Route, Navigate - reference-react.md
-// ============================================
-
-import { Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import Navbar from './components/Navbar';
-import ProtectedRoute from './components/ProtectedRoute';
-
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
-import InterviewSetupPage from './pages/InterviewSetupPage'
+import InterviewSetupPage from './pages/InterviewSetupPage';
+import InterviewPage from './pages/InterviewPage';
 function App() {
   return (
     <div className="app-shell">
@@ -38,41 +28,18 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </div>
-  );
-}
-export default App;
-
-function App() {
-  return (
-    <div className="app-shell">
-      <Routes>
-        {/* Public route */}
-        <Route path="/login" element={<LoginPage />} />
-
-        {/* Protected routes - require authentication */}
         <Route
-          path="/"
+          path="/interview/:id"
           element={
             <ProtectedRoute>
               <Navbar />
-              <div style={{ padding: '2rem', textAlign: 'center' }}>
-                <h2>Welcome! Build the HomePage to get started.</h2>
-              </div>
+              <InterviewPage />
             </ProtectedRoute>
           }
         />
-
-        {/* TODO: Add more protected routes as you build the pages */}
-        {/* /setup, /interview/:id, /feedback/:id, /history */}
-
-        {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );
 }
-
 export default App;
